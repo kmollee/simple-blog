@@ -5,7 +5,7 @@ from django.core.wsgi import get_wsgi_application
 
 if 'OPENSHIFT_REPO_DIR' in os.environ:
     sys.path.append(
-        os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'source'))
+        os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'source'))
 else:
     sys.path.append(os.path.join(os.path.dirname(__file__), 'source'))
 

@@ -1,0 +1,19 @@
+
+<h1>{{item.getTitle}}</h1>
+<p>{{item.note}}</p>
+
+<hr>
+
+{% for comment in item.get_relate_comments %}
+    <div class="comment">
+        <div class="author">{{comment.author}}</div>
+        <div class="date">{{comment.date}}</div>
+        <div class="operate">
+            <a href="{{ comment.get_update_url }}">Update</a>
+            <a href="{{ comment.get_delete_url }}">Delete</a>
+        <div>
+        <div class="body">
+            {{comment|safe}}
+        </div>
+    </div>
+{% endfor %}

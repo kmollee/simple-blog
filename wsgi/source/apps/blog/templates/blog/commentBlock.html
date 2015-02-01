@@ -1,0 +1,21 @@
+{% load blog_permission %}
+{% load description_markdown %}
+<div class="comment row">
+    <div class="headline col-sm-12">
+        <a href="{{comment.get_absolute_url}}">{{comment.getTitle}}</a>
+    </div>
+    <div class="col-sm-12">
+        <ul class="meta">
+            <li class="written">{{comment.getSubmitter}}</li>
+            <li class="time">{{comment.getSubmittedOn|date:"d M Y"}}</a></li>
+            {% if comment|has_perm:user %}
+                <li><a class="edit" href="{{comment.get_update_url}}">Edit</a></li>
+                <li><a class="delete" href="{{comment.get_delete_url}}">Delete</a></li>
+            {% endif %}
+            <li class="up"><a href="{{comment.get_relate_entry_url}}">Up</a></li>
+        </ul>
+    </div>
+    <div class="description col-sm-12">
+      {{comment.getDescription|md|safe}}
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="app-list row">
+   <div class="col-sm-3 item"><a href="{% url 'blog:entry:list' %}">Blog</a></div>
+   <div class="col-sm-3 item"><a href="{% url 'account:index' %}">Account</a></div>
+</div>
+{% endblock content %}
+
+{% block extraJs %}
+<script>
+    var colors = ['#663399', '#674172', '#446CB3', '#22313F', '#3A539B', '#26A65B', '#1BBC9B', '#1E824C', '#EB9532'];
+    $(".app-list > .item").each(function( index ) {
+        $(this).css("background-color",colors[Math.floor(Math.random() * colors.length)]);
+    });
+</script>
+{% endblock extraJs %}

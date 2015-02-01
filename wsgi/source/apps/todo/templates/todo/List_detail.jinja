@@ -1,0 +1,210 @@
+{% extends "todo/base.jinja" %}
+{% block blockname %}List-{{list.name}}{% endblock blockname %}
+
+{% block extraJsLib %}
+    <script src="{{ static('js/ICanHaz.min.js') }}"></script>
+    <script src="{{ static('lib/chosen/chosen.jquery.min.js') }}"></script>
+    {#
+        <link rel="stylesheet" type="text/css" href="{{ static('lib/datepicker/jquery.datepick.css') }}">
+        <script type="text/javascript" src="{{ static('lib/datepicker/jquery.plugin.js') }}"></script>
+        <script type="text/javascript" src="{{ static('lib/datepicker/jquery.datepick.js') }}"></script>
+    #}
+{% endblock extraJsLib %}
+
+{% block extraCss %}
+    <link rel="stylesheet" href="{{ static('lib/chosen/chosen.min.css') }}">
+{% endblock extraCss %}
+
+
+
+
+{% raw %}
+<script id="incomplete" type="text/html">
+    <li class="item">
+        <div>
+            <input class="completeBox" type="checkbox" href="{{toggle_url}}" />
+        </div>
+        <div>
+            <div class="title"><a href="{{ absolute_url }}">{{title}}</a></div>
+            <div class="operator">
+                <a href="{{update_url}}">Update</a>
+                <a href="{{delete_url}}">Delete</a>
+            </div>
+        <div>
+    </li>
+</script>
+
+<script id="complete" type="text/html">
+    <li class="item">
+        <div>
+            <input class="completeBox" type="checkbox" href="{{toggle_url}}" checked="checked" />
+        </div>
+        <div>
+            <div class="title"><a href="{{ absolute_url }}">{{title}}</a></div>
+            <div class="operator">
+                <a href="{{update_url}}">Update</a>
+                <a href="{{delete_url}}">Delete</a>
+            </div>
+        <div>
+    </li>
+</script>
+{% endraw %}
+
+{% block content %}
+<h1> this is detail page <h1>
+
+<h1>{{ list.name }}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ itemform().as_p()|safe }}
+    <input type="submit" value="add list">
+</form>
+
+
+<div id="result"></div>
+
+<h2>Incomplete Tasks</h2>
+
+<ul id="incomplete_tasks">
+{% for item in list.incomplete_tasks() %}
+    <li class="item">
+    <div>
+        <input class="completeBox" type="checkbox" href="{{ url('todo:item:toggle' ,pk=item.id) }}" />
+    </div>
+
+    <div>
+        <div class="title"><a href="{{ item.get_absolute_url }}">{{item.title}}</a></div>
+        <div class="operator">
+            <a href="{{item.get_update_url}}">Update</a>
+            <a href="{{item.get_delete_url}}">Delete</a>
+        </div>
+    <div>
+
+    </li>
+{% endfor %}
+</ul>
+
+
+<h2>Complete Tasks</h2>
+
+
+<ul id="complete_tasks">
+{% for item in list.complete_tasks() %}
+    <li class="item">
+    <div>
+        <input type="checkbox" class="completeBox" href="{{ url('todo:item:toggle', pk=item.id) }}" checked />
+    </div>
+    <div>
+        <div class="title"><a href="{{ item.get_absolute_url }}">{{item.title}}</a></div>
+        <div class="operator">
+            <a href="{{item.get_update_url}}">Update</a>
+            <a href="{{item.get_delete_url}}">Delete</a>
+        </div>
+    <div>
+
+    </li>
+{% endfor %}
+</ul>
+{% endblock content %}
+
+{% block extraJs %}
+<script>
+    $(function(){
+        $('body').on('change', '.completeBox', function(event){
+            var anchor = $(this).parents(".item").find('.title>a');
+            console.log(anchor.text());
+            console.log(anchor.attr('href'));
+            console.log($(this).attr('href'));
+            console.log($(this).is(':checked'));
+            $.ajax({
+                url:$(this).attr('href'),
+                type:'POST',
+                success:function(json){
+                    var result;
+                    $("#result").html(json.result);
+
+                    //console.log($.parseJSON(json.incompleted_items).length);
+
+                    //var data = $.parseJSON(json.incompleted_items);
+                    var incompleted_data = json.incompleted_items;
+                    var completed_data = json.completed_items;
+                    $('#incomplete_tasks').empty();
+                    $('#complete_tasks').empty();
+                    for(var i=0; i<incompleted_data.length; i++){
+                        result = ich.incomplete(incompleted_data[i]);
+                        $('#incomplete_tasks').append(result);
+                    }
+                    for(var i=0; i<completed_data.length; i++){
+                        result = ich.complete(completed_data[i]);
+                        $('#complete_tasks').append(result);
+                    }
+
+                },
+                error:function(xhr, errmsg, err){
+                    $("#result").html("Oops! We have encountered an error: "+errmsg)
+                }
+            });
+            event.preventDefault();
+        });
+    });
+</script>
+<script>
+$('#id_priority').chosen({allow_single_deselect:true});
+//$('#id_due_date').datepick({dateFormat: 'yyyy-mm-dd'});
+</script>
+
+
+<script>
+    // This function gets cookie with a given name
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    /*
+    The functions below will create a header with csrftoken
+    */
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    function sameOrigin(url) {
+        // test that a given url is a same-origin URL
+        // url could be relative or scheme relative or absolute
+        var host = document.location.host; // host + port
+        var protocol = document.location.protocol;
+        var sr_origin = '//' + host;
+        var origin = protocol + sr_origin;
+        // Allow absolute or scheme relative URLs to same origin
+        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+            // or any other URL that isn't scheme relative or absolute i.e relative.
+            !(/^(\/\/|http:|https:).*/.test(url));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                // Send the token to same-origin, relative URLs only.
+                // Send the token only if the method warrants CSRF protection
+                // Using the CSRFToken value acquired earlier
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+</script>
+{% endblock extraJs %}

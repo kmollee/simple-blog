@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load compress %}
+{% block appName %}Blog{% endblock appName %}
+
+{% block extraCss %}
+    {{ form.media }}
+    {% compress css %}
+        <link href="{% static 'blog/blog.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{% static 'lib/highlight/styles/monokai_sublime.css' %}">
+    {% endcompress %}
+{% endblock extraCss %}
+
+
+{% block content %}
+<nav id="sidebar" class="col-sm-3"><!--nav-->
+    {% include "blog/slidebar.html" %}
+</nav>
+<div id="content" class="col-sm-9">
+    <div id="messages">
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                <i class="fa fa-info"></i>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% block body %}
+        this is body
+    {% endblock body %}
+</div>
+{% endblock content %}
+
+
+{% block extraJs %}
+    {% compress js %}
+        <script src="{% static 'lib/highlight/highlight.pack.js' %}"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+    {% endcompress %}
+{% endblock extraJs %}
+

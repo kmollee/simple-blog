@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteCond %{HTTP:CF-Visitor} '"scheme":"http"'
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L]

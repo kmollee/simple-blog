@@ -1,0 +1,32 @@
+
+<div class="widget col-sm-12">
+    <h3>Top 5 Tag</h3>
+    <ul>
+        {% for tag in tagside %}
+            <li class="item">{% include "blog/tagBlock.html" %}</li>
+        {% endfor %}
+    </ul>
+
+    {#<a class="btn btn-default" href="{% url 'blog:tag:list' %}">View All Tag</a>#}
+</div>
+
+{% comment %}
+<div class="tag-table col-sm-12">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Tag</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tag in tagside %}
+                <tr>
+                    <td>
+                        {% include "blog/tagBlock.html" %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endcomment %}

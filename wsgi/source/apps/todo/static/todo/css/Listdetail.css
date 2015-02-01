@@ -1,0 +1,68 @@
+/*@+leo-ver=5-thin*/
+/*@+node:lee.20150113062053.3: * @file Listdetail.css*/
+.tasks{
+    list-style-type: none;
+    padding: 1em 0;
+}
+.task{
+    margin:0.2em 0;
+    border: solid 1px #fff;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+.task-headline:hover{
+    background-color: #C7E8F3;
+}
+.task-content{
+    border-top: dashed 1px #fff;
+    margin: 5px 5px;
+    background-color: #fff;
+}
+.task-anchor{
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+.task-anchor:hover{
+    text-decoration: none;
+    color:white;
+}
+li.task[completed=True]{
+    background-color: #D6F8D6;
+}
+.priority-2{
+    background-color: #DA1D1B;
+}
+.priority-1{
+    background-color: #F6828C;
+}
+.priority-0{
+    background-color: #D6A99A;
+}
+
+.togglebtn{
+    display: block;
+    vertical-align:middle;
+    margin-left: 1em;
+    cursor: pointer;
+}
+#msg{
+    height: 1em;
+}
+li.task[completed=True] .togglebtn:before{
+    font-family: FontAwesome;
+    content:"\f046";
+}
+li.task[completed=False] .togglebtn:before{
+    font-family: FontAwesome;
+    content:"\f096";
+}
+li.task .updatebtn:before{
+    font-family: FontAwesome;
+    content:"\f044";
+}
+li.task .deletebtn:before{
+    font-family: FontAwesome;
+    content:"\f1f8";
+}
+/*@-leo*/

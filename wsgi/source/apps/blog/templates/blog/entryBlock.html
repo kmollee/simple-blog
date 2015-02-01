@@ -1,0 +1,21 @@
+{% load blog_permission %}
+<div class="row">
+    <div class="headline col-sm-12">
+        <a href="{{entry.get_absolute_url}}">{{entry.getTitle}}</a>
+    </div>
+    <div class="col-sm-12">
+        <ul class="meta">
+            <li class="written">{{entry.getSubmitter}}</li>
+            <li class="time">{{entry.getSubmittedOn|date:"d M Y"}}</a></li>
+            {% for tag in entry.getRelateTags %}
+                <li><a class="relate-tag" href="{{tag.get_absolute_url}}">{{tag}}</a></li>
+            {% endfor %}
+            <li class="count_comment">comments({{entry.comment_count}})</li>
+            {% if entry|has_perm:user %}
+                <li><a class="edit" href="{{entry.get_update_url}}">Edit</a></li>
+                <li><a class="delete" href="{{entry.get_delete_url}}">Delete</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+

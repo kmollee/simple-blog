@@ -1,0 +1,34 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block pageName %}Tag{% endblock pageName %}
+{% block body %}
+    <div class="headline">
+        <h3>Tag List</h3>
+    </div>
+    <div>
+        <ul class="row tags">
+            {% for tag in tags %}
+                <li class="col-sm-3 tag">
+                    {% include "blog/tagBlock.html" %}
+                </li>
+            {% endfor %}
+            <li class="col-sm-3 tag"><a href="{% url 'blog:tag:noTagList' %}">Notag</a></li>
+        </ul>
+    </div>
+    <div class="text-center row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {% include "pagination.html" %}
+        </div>
+    </div>
+    {% comment %}
+
+
+    <div id="tag-list" class="row">
+        {% for tag in tags %}
+        <div class="tag col-md-2">
+
+        </div>
+        {% endfor %}
+    </div>
+    {% endcomment %}
+{% endblock body %}

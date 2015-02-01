@@ -1,0 +1,8 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block pageName %}comment-{{object.title}}{% endblock pageName %}
+{% block body %}
+<div class="comment-detail">
+    {% include "blog/commentBlock.html" %}
+</div>
+{% endblock body %}

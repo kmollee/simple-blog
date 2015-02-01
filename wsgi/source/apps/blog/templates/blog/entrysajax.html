@@ -1,0 +1,29 @@
+{% load endless %}
+    {% if entrys %}
+        {% paginate entrys %}
+        <ul class="entrys">
+            {% for entry in entrys %}
+            <li class="entry">
+                {#{{forloop.counter0|add:page_obj.start_index }}#}
+                {% include "blog/entryBlock.html" %}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Sorry, no entry at this moment</p>
+    {% endif %}
+
+
+
+    <div class="text-center row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+{% get_pages %}
+{% if pages.paginated %}
+    Some info/layout to display only if the available
+    objects span multiple pages...
+    {{ pages }}
+{% endif %}
+
+        </div>
+    </div>

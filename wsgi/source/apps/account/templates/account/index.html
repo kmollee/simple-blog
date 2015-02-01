@@ -1,0 +1,9 @@
+{% extends "account/base.html" %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <p>Welcome {{user.username}}</p>
+    {% else %}
+        <p class="info">Login or Register</p>
+    {% endif %}
+{% endblock body %}

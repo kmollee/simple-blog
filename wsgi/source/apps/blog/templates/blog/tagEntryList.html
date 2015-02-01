@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block pageName %}Tag-{{tagname}}{% endblock pageName %}
+{% block body %}
+    <div class="headline text-center">
+        Tag : {{tagname}}
+    </div>
+    <div>
+        <ul class="entrys">
+            {% for entry in page_obj %}
+                <li class="entry">
+                {% include "blog/entryBlock.html" %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="text-center row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {% include "pagination.html" %}
+        </div>
+    </div>
+{% endblock body %}

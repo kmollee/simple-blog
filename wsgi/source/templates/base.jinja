@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>{% block appName %}{% endblock appName %}-{% block pageName %}{% endblock pageName %}</title>
+        <!-- Bootstrap core CSS -->
+        <link href="{{ static('lib/bootstrap3/css/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{{ static('css/offcanvas.css') }}" rel="stylesheet">
+        
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="{{ static('lib/ie-emulation-modes-warning.js') }}"></script>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        {% block extraJsLib %}
+        {% endblock extraJsLib %}
+        
+        {% block extraCss %}
+        {% endblock extraCss %}
+    </head>
+    <body>
+        <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container">
+                {% include "nav.jinja" %}
+            </div><!-- /.container -->
+        </nav><!-- /.navbar -->
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-right">
+                {% block content %}
+                {% endblock content %}
+            </div><!--/row-->
+            <hr>
+            <footer class="center">
+                <p>&copy; Company 2014</p>
+            </footer>
+        </div><!--/.container-->
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ static('lib/jquery-1.11.1.min.js') }}"></script>
+        <script src="{{ static('lib/bootstrap3/js/bootstrap.min.js') }}"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="{{ static('js/ie10-viewport-bug-workaround.js') }}"></script>
+        <script src="{{ static('js/offcanvas.js') }}"></script>
+        {% block extraJs %}
+        {% endblock extraJs %}
+    </body>
+</html>

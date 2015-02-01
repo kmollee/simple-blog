@@ -1,0 +1,145 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+    height: 100%;
+    overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+body {
+  padding-top: 70px;
+  background-color: #FFF;
+}
+.container .credit {
+  margin: 20px 0;
+}
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+
+
+html, body, button, input, select, textarea {
+    font-family: "Open Sans","Helvetica Neue","Helvetica","sans-serif";
+    font-size: 18px;
+}
+
+
+.center{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.masonry { /* Masonry container */
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+}
+
+.masonry > .item { /* Masonry bricks or child elements */
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+}
+
+.app-list > .item{
+    display:block;
+    background-color:black;
+    color:white;
+    margin:1em auto;
+    text-align:center;
+    height:5em;
+    line-height:5em;
+    font-size:3em;
+    overflow:hidden;
+    border:1px solid white;
+    margin: -1px;
+}
+
+.app-list > .item > a{
+    text-decoration: none;
+    color:white;
+}
+
+.app-list > .item > a:hover{
+    text-decoration: underline;
+}
+
+nav{
+    text-transform: uppercase;
+}
+
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -50px;
+  /* Pad bottom by footer height */
+  padding: 0 0 50px;
+}
+
+/* Set the fixed height of the footer here */
+footer {
+    background-color: #7bcdba;
+    bottom: 0;
+    color: #fff;
+    font-size: 1em;
+    height: 35px;
+    left: 0;
+    letter-spacing: 0.1em;
+    line-height: 35px;
+    position: absolute;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.form-actions{
+    text-align: center;
+}

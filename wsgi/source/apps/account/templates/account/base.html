@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load compress %}
+{% block appName %}Account{% endblock appName %}
+
+
+{% block extraCss %}
+    {% compress css %}
+        <link href="{% static 'account/account.css' %}" rel="stylesheet">
+    {% endcompress %}
+{% endblock extraCss %}
+
+
+{% block content %}
+    {% include "account/sidebar.html" %}
+    <div id="body" class="col-sm-10">
+        <div id="messages">
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                    <i class="fa fa-info"></i>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+
+        {% block body %}
+            this is body
+        {% endblock body %}
+    </div>
+{% endblock content %}

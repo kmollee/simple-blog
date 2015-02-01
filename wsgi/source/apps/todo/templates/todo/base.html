@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block appName %}ToDo{% endblock appName %}
+
+{% block content %}
+<div id="content" class="col-sm-12">
+    <div id="messages">
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                <i class="fa fa-info"></i>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% block body %}
+        this is body
+    {% endblock body %}
+</div>
+{% endblock content %}

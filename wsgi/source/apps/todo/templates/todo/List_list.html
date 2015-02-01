@@ -1,0 +1,47 @@
+{% extends "todo/base.html" %}
+{% load crispy_forms_tags %}
+{% load compress %}
+{% load static %}
+{% block pageName %}List{% endblock pageName %}
+{% block body %}
+
+<div class="center">
+    <form class="itemForm form-inline" action="" method="POST">
+        {{ form|crispy }}
+        {% csrf_token %}
+         <button type="submit" class="btn btn-default"><i class="fa fa-plus fa-2x"></i></button>
+    </form>
+
+</div>
+
+<ul class="row" id="listblock">
+{% for list in lists %}
+    <li class="col-sm-4">
+        <div class="row">
+            <div class="title col-sm-9 center">
+
+                <a href="{{ list.get_absolute_url }}">{{list.name}} - {{list.author}}({{ list.incomplete_tasks.count }})</a>
+            </div>
+            <div class="operation col-sm-3">
+                <div class="update">
+                    <a href="{{ list.get_update_url }}"></a>
+                </div>
+                <div class="delete">
+                    <a href="{{ list.get_delete_url }}"></a>
+                </div>
+            </div>
+        </div>
+
+    </li>
+
+{% endfor %}
+</ul>
+
+{% endblock body %}
+
+{% block extraCss %}
+    {% compress css %}
+        <link rel="stylesheet" href="{% static "todo/css/Listlist.css" %}">
+    {% endcompress %}
+{% endblock extraCss %}
+

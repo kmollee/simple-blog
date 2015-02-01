@@ -1,0 +1,63 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block pageName %}Search{% endblock pageName %}
+{% block body %}
+    {#<p>search:{{query}}</p>#}
+    <form class="searchform" method="get">
+        {{form.as_p}}
+    </form>
+    {% comment %}
+
+
+    {{page}}
+    {{suggestion}}
+    {{searchqueryset}}
+    {% for result in page.object_list %}
+    <div class="search_result">
+        <h3><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></h3>
+
+        <p>{{ result.object.body|truncatewords:80 }}</p>
+    </div>
+    {% empty %}
+        <p>Sorry, no results found.</p>
+    {% endfor %}
+    {% endcomment %}
+    {% if page.object_list %}
+    <div>
+        <ul class="searchlist">
+            {% for result in page.object_list %}
+            <li class="item">
+                <div>
+                    <div class="headline"><a href="{{ result.object.get_absolute_url }}">{{result.title}}</a></div>
+                    <div class="meta">
+                        <ul>
+                            <li class="written">{{result.object.getSubmitter}}</li>
+                            <li class="time">{{result.object.getSubmittedOn|date:"d M Y"}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+        <p class="info">Sorry, result is empty</p>
+    {% endif %}
+
+    <div class="text-center row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {% include "pagination.html" %}
+        </div>
+    </div>
+    {% comment %}
+    {% for result in page.object_list %}
+    <div class="search_result">
+        <h3><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></h3>
+
+        <p>{{ result.object.body|truncatewords:80 }}</p>
+    </div>
+    {% empty %}
+        <p>Sorry, no results found.</p>
+    {% endfor %}
+    {% endcomment %}
+{% endblock body %}

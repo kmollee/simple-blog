@@ -1,0 +1,63 @@
+*:before{
+    font-family: "FontAwesome";
+    margin-right: 0.5em;
+}
+
+#sidebar a{
+    display: block;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: inherit;
+    vertical-align: middle;
+}
+
+#sidebar ul{
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+}
+
+#sidebar .item{
+    display: block;
+    border:#4ecdc4 2px solid;
+    border-radius: 5px;
+    margin:10px auto;
+    height: 3em;
+    line-height: 3em;
+    overflow: hidden;
+}
+
+#sidebar .item:hover{
+    color:white;
+    background-color: #4ecdc4;
+}
+
+a.login:before{
+    content:"\f090";
+}
+
+a.logout:before{
+    content:"\f08b";
+}
+
+a.home:before{
+    content:"\f015";
+}
+
+a.register:before{
+    content:"\f007";
+}
+
+p.info:before{
+    content:"\f129";
+}
+
+p.info{
+    padding: 1em 1em;
+    background-color: #E74C3C;
+    color:white;
+    border: #E74C3C 0.1em solid;
+    overflow: hidden;
+    border-radius: 1em;
+}

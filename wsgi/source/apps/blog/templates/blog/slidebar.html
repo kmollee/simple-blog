@@ -1,0 +1,23 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="row">
+    {% comment %}
+    <div class="col-sm-12">
+        <img src="{% static "img/camel.png" %}" alt="test" class="img-thumbnail img-responsive center" />
+    </div>
+    {% endcomment %}
+    <div class="col-sm-12">
+        <ul>
+            <li class="item"><a class="home" href="{% url 'blog:entry:list' %}">Home</a></li>
+            <li class="item"><a class="add" href="{% url 'blog:entry:create' %}">Entry</a></li>
+            <li class="item"><a class="add" href="{% url 'blog:tag:create' %}">Tag</a></li>
+            <li class="item"><a class="relate-tag" href="{% url 'blog:tag:list' %}">Relate Tag</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-12">
+        <form id="searchform" role="form" class="form-inline" action="{% url 'blog:search' %}" method="get">
+            <input type="text" name="q" placeholder="search it">
+        </form>
+    </div>
+    {% include "blog/tagscroll.html" %}
+</div>

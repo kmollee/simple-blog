@@ -1,0 +1,43 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load description_markdown %}
+{% block pageName %}Entry-{{object.title}}{% endblock pageName %}
+{% block body %}
+    <div class="entry">
+        {% include "blog/entryBlock.html" %}
+        <div class="description">
+           {{entry.getDescription|md|safe}}
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        {% if page_obj %}
+        <div class="comments col-sm-10 col-sm-offset-2">
+            {% for comment in page_obj %}
+                {% include "blog/commentBlock.html" %}
+            {% endfor %}
+        </div>
+        <div class="text-center row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                {% include "pagination.html" %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-sm-10 col-sm-offset-2">
+        {% if user.is_authenticated %}
+
+            {% crispy form %}
+
+        {% else %}
+
+
+
+            <p class="info">Want to comment this entry?<a href="{% url 'account:login' %}">Login</a>{% if OPEN_REGISTER %} or <a href="{% url 'account:register' %}">Register</a>{% endif %}</p>
+        {% endif %}
+        </div>
+    </div>
+{% endblock body %}

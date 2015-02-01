@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block pageName %}Delete-{{object.title}}{% endblock pageName %}
+{% block body %}
+    <h3>do you really want to delete this {{object.getModelName}} - {{object.getTitle}}</h3>
+    {% include "form.html" %}
+{% endblock body %}

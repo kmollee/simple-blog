@@ -1,0 +1,446 @@
+#sidebar{
+    /*border:color line-width style*/
+    /*border-right: #6C7A89 5px solid;*/
+    padding-right: 5px;
+    background-color: white;
+}
+
+#sidebar a{
+    text-decoration: none;
+    text-align: center;
+}
+
+#sidebar ul{
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+}
+
+#sidebar .item{
+    display: block;
+    border:#4ecdc4 2px solid;
+    border-radius: 5px;
+    margin:10px auto;
+    height: 3em;
+    line-height: 3em;
+}
+
+#sidebar .item:hover{
+    color:white;
+    background-color: #4ecdc4;
+}
+#sidebar a{
+    display: block;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: inherit;
+    vertical-align: middle;
+}
+/*
+li:before, a:before{
+    margin-right: 0.5em;
+}
+*/
+*:before{
+    font-family: FontAwesome;
+    margin-right: 0.5em;
+}
+
+.item .home:before{
+    content:"\f015";
+}
+
+.item .add:before{
+    content:"\f067";
+}
+
+.widget h3{
+    text-align: center;
+}
+
+.relate-tag:before{
+    content: "\f02b";
+}
+
+.edit:before{
+    content:"\f044";
+}
+.delete:before{
+    content:"\f1f8";
+}
+
+.written:before{
+    content:"\f007";
+}
+
+.time:before{
+    content:"\f017";
+}
+
+.count_comment:before{
+    content:"\f075";
+}
+.up:before{
+    content:"\e129";
+}
+
+#content entrys.ul,#content comments.ul,#content tags.ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+.meta li{
+    display: inline-block;
+    margin: 5px 0.5em;
+}
+
+.entry{
+    font-size: 1em;
+    display: block;
+    background-color: #fff;
+    list-style: outside none none;
+    margin: 1em auto;
+    border:#dd4814 0.1em solid;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.headline{
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+}
+
+.entry a{
+    color: #dd4814;
+    text-decoration: none;
+    background: none repeat scroll 0 0 transparent;
+}
+
+
+.entry:hover{
+    background-color: #ffedeb;
+    opacity: 1;
+
+}
+.entry .link{
+    display: block;
+    text-align: center;
+}
+.entry .link:hover{
+    color: #dd4814;
+    text-decoration: underline;
+}
+
+.description{
+    background-color: #E4F1FE;
+    border-top: #dd4814 0.1em solid;
+    padding: 1em 1em;
+}
+
+.description:hover{
+    background-color:#FDE3A7;
+}
+
+:-moz-any(.comment-detail, .comments) .comment{
+    font-size: 1em;
+    display: block;
+    background-color: #fff;
+    list-style: outside none none;
+    margin: 15px auto;
+    border:#3498DB 0.1em solid;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+:-webkit-any(.comment-detail, .comments) .comment{
+    font-size: 1em;
+    display: block;
+    background-color: #fff;
+    list-style: outside none none;
+    margin: 15px auto;
+    border:#3498DB 0.1em solid;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+:-moz-any(.comment-detail, .comments) .comment:hover{
+    background-color: #C5EFF7;
+}
+
+:-webkit-any(.comment-detail, .comments) .comment:hover{
+    background-color: #C5EFF7;
+}
+
+:-moz-any(.comment-detail, .comments) .comment .description{
+    border-top: #3498DB 0.1em solid;
+}
+:-webkit-any(.comment-detail, .comments) .comment .description{
+    border-top: #3498DB 0.1em solid;
+}
+:-moz-any(.comment-detail, .comments) .comment a{
+    text-decoration: none;
+}
+:-webkit-any(.comment-detail, .comments) .comment a{
+    text-decoration: none;
+}
+.edit{
+    color:#9B59B6 !important;
+}
+.delete{
+    color:#F62459 !important;
+}
+
+
+/*
+.tags > .tag{
+    font-size: 1.3em;
+    display: inline-flex;
+    background-color: #fff;
+    list-style: outside none none;
+    margin: 15px auto;
+    border:#3498DB 0.1em solid;
+    border-radius: 0.5em;
+    overflow: hidden;
+    height: 1.5em;
+}
+*/
+
+.tags > .tag{
+    display:block;
+    background-color:#2C3E50;
+    color:white;
+    margin:0.5em auto;
+    text-align:center;
+    height:5em;
+    line-height:5em;
+    font-size:1em;
+    overflow:hidden;
+    outline:2px solid white;
+    /*
+    border:2px solid white;
+    margin: -2px;
+    */
+}
+
+
+.tags > .tag:hover{
+    background-color: #59ABE3;
+    color:white;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transform: scale(1);
+    z-index: 999;
+}
+
+.tags > .tag a{
+    text-decoration: none;
+    display: block;
+    color:inherit;
+}
+
+p.info{
+    padding: 1em 1em;
+    background-color: #E74C3C;
+    color:white;
+    border: #E74C3C 0.1em solid;
+    overflow: hidden;
+    border-radius: 1em;
+}
+p.info:before{
+    content:"\f129";
+}
+
+
+
+.searchlist .item{
+    font-size: 1em;
+    display: block;
+    background-color: #fff;
+    list-style: outside none none;
+    margin: 1em auto;
+    border:#26A65B 0.1em solid;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.searchlist .item:hover{
+    background-color: #C8F7C5;
+}
+
+.searchlist a{
+    text-decoration: none;
+}
+
+#searchform input[name=q]{
+    display: block;
+    height: 3em;
+    width: 100%;
+}
+
+.searchform{
+    padding: 1em 1em;
+    background-color: #F2CCC3;
+    color:white;
+    /*border: #5C97BF 0.1em solid;*/
+    border-radius: 0.5em;
+    margin: 0.5em 0 0.5em 2em;
+}
+
+
+/*
+
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #23241f;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs,
+.hljs-tag,
+.css .hljs-rules,
+.css .hljs-value,
+.aspectj .hljs-function,
+.css .hljs-function
+.hljs-preprocessor,
+.hljs-pragma {
+  color: #f8f8f2;
+}
+
+.hljs-strongemphasis,
+.hljs-strong,
+.hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-blockquote,
+.hljs-horizontal_rule,
+.hljs-number,
+.hljs-regexp,
+.alias .hljs-keyword,
+.hljs-literal,
+.hljs-hexcolor {
+  color: #ae81ff;
+}
+
+.hljs-tag .hljs-value,
+.hljs-code,
+.hljs-title,
+.css .hljs-class,
+.hljs-class .hljs-title:last-child {
+  color: #a6e22e;
+}
+
+.hljs-link_url {
+  font-size: 80%;
+}
+
+.hljs-strong,
+.hljs-strongemphasis {
+  font-weight: bold;
+}
+
+.hljs-emphasis,
+.hljs-strongemphasis,
+.hljs-class .hljs-title:last-child,
+.hljs-typename {
+  font-style: italic;
+}
+
+.hljs-keyword,
+.ruby .hljs-class .hljs-keyword:first-child,
+.ruby .hljs-function .hljs-keyword,
+.hljs-function,
+.hljs-change,
+.hljs-winutils,
+.hljs-flow,
+.nginx .hljs-title,
+.tex .hljs-special,
+.hljs-header,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-symbol .hljs-string,
+.hljs-tag .hljs-title,
+.hljs-value,
+.alias .hljs-keyword:first-child,
+.css .hljs-tag,
+.css .unit,
+.css .hljs-important {
+  color: #f92672;
+}
+
+.hljs-function .hljs-keyword,
+.hljs-class .hljs-keyword:first-child,
+.hljs-aspect .hljs-keyword:first-child,
+.hljs-constant,
+.hljs-typename,
+.css .hljs-attribute {
+  color: #66d9ef;
+}
+
+.hljs-variable,
+.hljs-params,
+.hljs-class .hljs-title,
+.hljs-aspect .hljs-title {
+  color: #f8f8f2;
+}
+
+.hljs-string,
+.css .hljs-id,
+.hljs-subst,
+.hljs-type,
+.ruby .hljs-class .hljs-parent,
+.hljs-built_in,
+.django .hljs-template_tag,
+.django .hljs-variable,
+.smalltalk .hljs-class,
+.django .hljs-filter .hljs-argument,
+.smalltalk .hljs-localvars,
+.smalltalk .hljs-array,
+.hljs-attr_selector,
+.hljs-pseudo,
+.hljs-addition,
+.hljs-stream,
+.hljs-envvar,
+.apache .hljs-tag,
+.apache .hljs-cbracket,
+.tex .hljs-command,
+.hljs-prompt,
+.hljs-link_label,
+.hljs-link_url {
+  color: #e6db74;
+}
+
+.hljs-comment,
+.hljs-javadoc,
+.hljs-annotation,
+.hljs-decorator,
+.hljs-pi,
+.hljs-doctype,
+.hljs-deletion,
+.hljs-shebang,
+.apache .hljs-sqbracket,
+.tex .hljs-formula {
+  color: #75715e;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata,
+.xml .php,
+.php .xml {
+  opacity: 0.5;
+}

@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block pageName %}List{% endblock pageName %}
+
+{% block body %}
+    
+    {% if entrys %}
+        <ul class="entrys">
+            {% for entry in entrys %}
+            <li class="entry">
+                {#{{forloop.counter0|add:page_obj.start_index }}#}
+                {% include "blog/entryBlock.html" %}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Sorry, no entry at this moment</p>
+    {% endif %}
+
+
+
+    <div class="text-center row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {% include "pagination.html" %}
+        </div>
+    </div>
+{% endblock body %}

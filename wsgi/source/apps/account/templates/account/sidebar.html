@@ -1,0 +1,20 @@
+<nav id="sidebar" class="col-sm-2">
+    <ul>
+        <li class="item"><a class="home" href="{% url 'account:index' %}">Index</a></li>
+        {% if user.is_authenticated %}
+            <li class="item"><a class="logout" href="{% url 'account:logout' %}">Logout</a></li>
+
+                <li class="item"><a href="{% url 'account:changepassword' %}">Change Password</a></li>
+
+
+        {% else %}
+            <li class="item"><a class="login" href="{% url 'account:login' %}">Login</a></li>
+            {% if OPEN_REGISTER %}
+                <li class="item"><a class="register" href="{% url 'account:register' %}">Register</a></li>
+            {% endif %}
+            {% if OPEN_FORGET_PASSWORD %}
+                <li class="item"><a href="{% url 'account:reset_password' %}">Forget Password?</a></li>
+            {% endif %}
+        {% endif %}
+    </ul>
+</nav>

@@ -29,5 +29,5 @@ Option
 
 ## DEMO
 
-[my blog](https://blog.kmol.tk/blog/entry/)
+[my blog](https://log.mongkonglee.com)
 
